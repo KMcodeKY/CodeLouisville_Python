@@ -9,7 +9,7 @@ class Category(models.Model):
         return self.type
 
 
-class ToDo(models.Model):
+class Checklist(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=255)
     start_date = models.DateField(null=True, blank=True)
