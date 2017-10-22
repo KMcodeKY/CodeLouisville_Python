@@ -1,9 +1,36 @@
 .row {
-  display: block;
+    display: block;
 }
 
 .row:after {
-  display: table;
-  content: " ";
-  clear: both;
+    display: table;
+    content: " ";
+    clear: both;
+}
+
+.wrap {
+    margin: auto;
+}
+
+/****** Main Page ******/
+.main-logo {
+    font-size: 3em;
+    width: 100%;
+    padding: 5px;
+}
+
+.main-color-1 {
+    color: #000080;
+}
+
+.main-color-2 {
+    color: #a6a6a6;
+}
+
+
+@media(min-width: 992px) {
+    .main-logo{
+        width: 50%;
+        padding: 20px;
+    }
 }
