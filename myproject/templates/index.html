@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 {% load static from staticfiles %}
 
-{% block body_content %}
-    <div class="row main-logo wrap">
-        <p class="main-color-1">Check<span class="main-color-2">list</span></p>
-        <p class="main-color-1">Yourself</p>
+{% block content %}
+    <div class="group main-logo wrap">
+        <p class="group main-color-1 text-left">Check<span class="main-color-2">list</span></p>
+        <p class="group main-color-1 text-right">Yourself</p>
     </div>
-    <div>
+
+    <div class="group wrap">
         <p>A new way to organize your to-do list.</p>
     </div>
-{% endblock %}
+{% endblock content %}

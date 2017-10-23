@@ -9,7 +9,7 @@ def checklist_list(request):
 
 def checklist_detail(request, pk):
     checklist = get_object_or_404(Checklist, pk=pk)
-    return render(request, 'checklist/checklist:detail.html', {'checklist': checklist})
+    return render(request, 'checklist/checklist_detail.html', {'checklist': checklist})
 
 class ChecklistListView(ListView):
     context_object_name = 'checklists'

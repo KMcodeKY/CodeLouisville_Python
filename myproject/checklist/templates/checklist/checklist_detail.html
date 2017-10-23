@@ -1,0 +1,8 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>{{ checklist.title  }}</h1>
+<p class="muted">{{ checklist.start_date }}</p>
+<p>Date: <strong>{{ checklist.end_date }}</strong></p>
+<p><a href="{% url 'checklist:update' pk=checklist.pk %}" class="review-lbl">Edit</a></p>
+{% endblock %}

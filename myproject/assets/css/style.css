@@ -1,22 +1,37 @@
-.row {
-    display: block;
+* {
+  box-sizing: border-box;
 }
 
-.row:after {
+.group:before,
+.group:after {
+    content: "";
     display: table;
-    content: " ";
+}
+.group:after {
     clear: both;
+}
+.group {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
 .wrap {
     margin: auto;
 }
 
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
 /****** Main Page ******/
 .main-logo {
     font-size: 3em;
     width: 100%;
-    padding: 5px;
+    padding: 10%;
+    font-weight: bold;
 }
 
 .main-color-1 {
@@ -27,10 +42,24 @@
     color: #a6a6a6;
 }
 
+/****** Media Queries ******/
+@media only screen and (min-width : 480px) {
+    .main-logo{
+        width: 60%;
+        font-size: 4em;
+    }
+}
 
-@media(min-width: 992px) {
+@media only screen and (min-width : 768px){
     .main-logo{
         width: 50%;
-        padding: 20px;
+        font-size: 5em;
+    }
+}
+
+@media only screen and (min-width : 992px) {
+    .main-logo{
+        width: 50%;
+        font-size: 6em;
     }
 }
