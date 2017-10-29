@@ -20,29 +20,34 @@
 <body>
     <!-- Header -->
     <section class="header">
-        <div class="wrap">
-            <div class="row">
 
-                    <nav id="main-nav" role="navigation">
-                        <ul>
-                            <li><a href="\home">Home</a></li>
-                            <li><a href="\checklist">Get Started!</a></li>
-                            <li><a href="\contact">Contact</a></li>
-                        </ul>
-                    </nav>
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <p class="navbar-text nav-header-text-xs"><strong>Check<span class="nav-color-2">list</span> Yourself</strong></p>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
 
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="\home">Home</a></li>
+                        <li><a href="\checklist">Get Started!</a></li>
+                        <li><a href="\contact">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </nav>
+
     </section>
     <!-- /Header -->
     {% block content %}{% endblock %}
     <!-- Footer -->
-    <footer>
-        <div class="wrap">
-            <div class="row">
-
-            </div>
-        </div>
+    <footer class="footer">
+         <p>&copy; {% now "Y" %} - Checklist Yourself</p>
     </footer>
     <!-- /Footer -->
 
