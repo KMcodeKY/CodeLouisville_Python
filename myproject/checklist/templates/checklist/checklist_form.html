@@ -1,14 +1,59 @@
 {% extends 'layout.html' %}
+{% load static from staticfiles %}
+{% load checklist_tags %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}" />
+{% endblock %}
 
 {% block content %}
-<h1>{% if not form.instance.pk %}Submit Item{% else %}Edit {{ form.instance.title }}{% endif %}</h1>
+<div class="container">
 
-<form method='POST' style='padding:0px 50px 30px;'>
-	{% csrf_token %}
-	{{ form.as_p }}
-	<div style='display:flex;'>
-		<input type="submit" class="review-btn" value="Save">
-		{% if form.instance.pk %}<a class="review-btn-a" href="{% url 'checklist:delete' pk=checklist.pk %}">Delete</a>{% endif %}
+	<div class='page-header'>
+		<h1 class="hide-mobile">{% if not form.instance.pk %}Create New: {% else %}Edit <span class="edit-item">{{ form.instance.title }}</span>{% endif %}</h1>
+		<h1 class="show-mobile">{% if not form.instance.pk %}Create New: {% else %}Edit: {% endif %}</h1>
+	</div>
+
+<form method='POST'>
+	<div class="form-input">
+		{% csrf_token %}
+		{% for field in form %}
+			<div class="fieldWrapper row">
+				{{ field.errors }}
+				{{ field.label_tag }}
+				{{ field|addclass:'input-field' }}
+				{% if field.help_text %}
+					<p class="help">{{ field.help_text|safe }}</p>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+	<div>
+		<div class='text-center'>
+    		<div class='btn-grp'>
+				<input type="submit" class="btn btn-success" value="Save">
+				<div class='btn btn-warning'><a href="{% url 'checklist:create' %}" class="btn-add">Cancel</a></div>
+				{% if form.instance.pk %}<a class="btn btn-danger" href="{% url 'checklist:delete' pk=checklist.pk %}">Delete</a>{% endif %}
+			</div>
+		</div>
 	</div>
 </form>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+	jQuery('#id_start_date').addClass('datepicker');
+	jQuery('#id_end_date').addClass('datepicker');
+	jQuery("label").addClass('col-xs-12 col-sm-3');
+	jQuery('.input-field').addClass('col-xs-12 col-sm-9');
+	jQuery('#id_completed').removeClass().addClass('col-sm-9').css("width","auto");
+	jQuery('label[for="id_completed"]').removeClass().addClass('col-sm-3');
+
+	$(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy"
+        });
+    });
+</script>
 {% endblock %}

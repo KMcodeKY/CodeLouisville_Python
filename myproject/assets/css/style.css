@@ -14,8 +14,35 @@
   zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
+.container {
+    margin-bottom: 20px;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+ }
+
+.show-mobile {
+    display: none;
+}
+
+.hide-mobile {
+    display: block;
+}
+
 .wrap {
     margin: auto;
+}
+
+.page-header {
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.btn-add {
+    color: white;
+    font-weight: bold;
 }
 
 .text-right {
@@ -25,6 +52,7 @@
 .text-left {
     text-align: left;
 }
+
 
 /****** Main Page ******/
 .main-logo {
@@ -41,6 +69,16 @@
 .main-color-2 {
     color: #a6a6a6;
 }
+
+.table-headers {
+    padding: 0px;
+    font-weight: bold;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
 
 /****** Media Queries ******/
 @media only screen and (min-width : 480px) {
@@ -63,3 +101,12 @@
         font-size: 6em;
     }
 }
+
+@media only screen and (max-width: 480px) {
+    .show-mobile {
+        display: block;
+      }
+    .hide-mobile {
+        display: none;
+      }
+ }

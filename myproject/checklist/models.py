@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
-
 class Category(models.Model):
     type = models.CharField(max_length=255)
 
