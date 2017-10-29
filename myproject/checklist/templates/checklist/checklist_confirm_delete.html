@@ -1,20 +1,55 @@
 {% extends 'layout.html' %}
+{% load static from staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}" />
+{% endblock %}
 
 {% block content %}
 
 <div class="container">
 
 	<div class='page-header'>
-		<h1 class="hide-mobile">{% if not form.instance.pk %}Create New: {% else %}Edit <span class="edit-item">{{ form.instance.title }}</span>{% endif %}</h1>
-		<h1 class="show-mobile">{% if not form.instance.pk %}Create New: {% else %}Edit: {% endif %}</h1>
+		<h1 class="hide-mobile">Delete <span class="edit-item">{{ checklist.title }}</span>?</h1>
+		<h1 class="show-mobile">Delete? </h1>
 	</div>
 
-
-
-<h1>Delete {{ checklist.title }}?</h1>
-
-<form method='POST' style='width:100px;margin:0 auto;'>
-	{% csrf_token %}
-	<input type="submit" class="review-btn" value="Delete"> <a href="\checklist" class="review-lbl">Cancel</a>
+<form method='POST'>
+	<div class="form-input">
+		{% csrf_token %}
+		<div class="fieldWrapper row">
+			<div class="col-xs-12 col-sm-3"><strong>Title:</strong></div>
+			<div class="col-xs-12 col-sm-9">{{ checklist.title }}</div>
+		</div>
+		<div class="fieldWrapper row">
+			<div class="col-xs-12 col-sm-3"><strong>Start Date:</strong></div>
+			<div class="col-xs-12 col-sm-9">{{ checklist.start_date }}</div>
+		</div>
+		<div class="fieldWrapper row">
+			<div class="col-xs-12 col-sm-3"><strong>Start Date:</strong></div>
+			<div class="col-xs-12 col-sm-9">{{ checklist.end_date }}</div>
+		</div>
+		<div class="fieldWrapper row">
+			<div class="col-xs-12 col-sm-3"><strong>Description:</strong></div>
+			<div class="col-xs-12 col-sm-9">{{ checklist.description }}</div>
+		</div>
+		{% if checklist.category %}
+		<div class="fieldWrapper row">
+			<div class="col-xs-12 col-sm-3"><strong>Category:</strong></div>
+			<div class="col-xs-12 col-sm-9">{{ checklist.category }}</div>
+		</div>
+		{% endif %}
+		<div class="fieldWrapper row">
+			<div class="col-xs-12 col-sm-3"><strong>Completed:</strong></div>
+			<div class="col-xs-12 col-sm-9">{% if checklist.completed %}Yes{% else %}No{% endif %}</div>
+		</div>
+	</div>
+	<div class='text-center'>
+		<div class='btn-grp'>
+			<input type="submit" class="btn btn-danger btn-add" value="Delete">
+			<div class="btn btn-warning"><a class="btn-add" href="\checklist">Cancel</a></div>
+		</div>
+	</div>
 </form>
+</div>
 {% endblock %}

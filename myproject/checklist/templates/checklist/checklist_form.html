@@ -28,13 +28,11 @@
 			</div>
 		{% endfor %}
 	</div>
-	<div>
-		<div class='text-center'>
-    		<div class='btn-grp'>
-				<input type="submit" class="btn btn-success" value="Save">
-				<div class='btn btn-warning'><a href="{% url 'checklist:create' %}" class="btn-add">Cancel</a></div>
-				{% if form.instance.pk %}<a class="btn btn-danger" href="{% url 'checklist:delete' pk=checklist.pk %}">Delete</a>{% endif %}
-			</div>
+	<div class='text-center'>
+    	<div class='btn-grp'>
+			<input type="submit" class="btn btn-success btn-add" value="Save">
+			<div class="btn btn-warning"><a class="btn-add" href="\checklist">Cancel</a></div>
+			{% if form.instance.pk %}<a class="btn btn-danger btn-add" href="{% url 'checklist:delete' pk=checklist.pk %}">Delete</a>{% endif %}
 		</div>
 	</div>
 </form>

@@ -4,6 +4,15 @@
     max-width: 200px;
 }
 
+.edit-item {
+    color: #a6a6a6;
+}
+
+.input-field {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .fieldWrapper {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -18,13 +27,4 @@
 
 .btn-grp .btn:last-child {
     margin-right: 0px;
-}
-
-.edit-item {
-    color: #a6a6a6;
-}
-
-.input-field {
-    padding-right: 5px;
-    padding-left: 5px;
 }

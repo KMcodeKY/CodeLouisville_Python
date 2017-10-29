@@ -1,8 +1,52 @@
 {% extends 'layout.html' %}
+{% load static from staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}" />
+{% endblock %}
 
 {% block content %}
-<h1>{{ checklist.title  }}</h1>
-<p class="muted">{{ checklist.start_date }}</p>
-<p>Date: <strong>{{ checklist.end_date }}</strong></p>
-<p><a href="{% url 'checklist:update' pk=checklist.pk %}" class="">Edit</a></p>
+
+<div class="container">
+
+	<div class='page-header'>
+		<h1 class="hide-mobile"><span class="edit-item">{{ checklist.title }}</span></h1>
+		<h1 class="show-mobile">Detail For:</h1>
+	</div>
+
+    <div class="form-input">
+        <div class="fieldWrapper row">
+            <div class="col-xs-12 col-sm-3"><strong>Title:</strong></div>
+            <div class="col-xs-12 col-sm-9">{{ checklist.title }}</div>
+        </div>
+        <div class="fieldWrapper row">
+            <div class="col-xs-12 col-sm-3"><strong>Start Date:</strong></div>
+            <div class="col-xs-12 col-sm-9">{{ checklist.start_date }}</div>
+        </div>
+        <div class="fieldWrapper row">
+            <div class="col-xs-12 col-sm-3"><strong>Start Date:</strong></div>
+            <div class="col-xs-12 col-sm-9">{{ checklist.end_date }}</div>
+        </div>
+        <div class="fieldWrapper row">
+            <div class="col-xs-12 col-sm-3"><strong>Description:</strong></div>
+            <div class="col-xs-12 col-sm-9">{{ checklist.description }}</div>
+        </div>
+        {% if checklist.category %}
+        <div class="fieldWrapper row">
+            <div class="col-xs-12 col-sm-3"><strong>Category:</strong></div>
+            <div class="col-xs-12 col-sm-9">{{ checklist.category }}</div>
+        </div>
+        {% endif %}
+        <div class="fieldWrapper row">
+            <div class="col-xs-12 col-sm-3"><strong>Completed:</strong></div>
+            <div class="col-xs-12 col-sm-9">{% if checklist.completed %}Yes{% else %}No{% endif %}</div>
+        </div>
+	</div>
+	<div class='text-center'>
+		<div class='btn-grp'>
+			<div class="btn btn-success"><a class="btn-add" href="{% url 'checklist:update' pk=checklist.pk %}">Edit</a></div>
+			<div class="btn btn-warning"><a class="btn-add" href="\checklist">Cancel</a></div>
+		</div>
+	</div>
+</div>
 {% endblock %}
