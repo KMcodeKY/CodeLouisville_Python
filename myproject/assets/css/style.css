@@ -51,6 +51,7 @@ body {
 .table-headers {
     padding: 0px;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .no-padding {
@@ -116,10 +117,16 @@ body {
 @media only screen and (max-width: 480px) {
     .show-mobile {
         display: block;
-      }
+    }
     .hide-mobile {
         display: none;
-      }
+    }
+    .list-section {
+        font-size: 0.8em;
+    }
+    .list-title {
+        font-size: 2em;
+    }
 }
 
 @media only screen and (min-width : 350px) {

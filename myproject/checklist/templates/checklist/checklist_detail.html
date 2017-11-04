@@ -22,7 +22,7 @@
         <div class="fieldWrapper row">
             <div class="col-xs-12 col-sm-3"><strong>Start Date:</strong></div>
             {% if checklist.start_date %}
-                <div class="col-xs-12 col-sm-9">{{ checklist.start_date }}</div>
+                <div class="col-xs-12 col-sm-9">{{ checklist.start_date|date:'F j, Y' }}</div>
             {% else %}
                 <div class="col-xs-12 col-sm-9">{{ checklist.start_date }}</div>
             {% endif %}
@@ -30,7 +30,7 @@
         <div class="fieldWrapper row">
             <div class="col-xs-12 col-sm-3"><strong>Start Date:</strong></div>
             {% if checklist.end_date %}
-                <div class="col-xs-12 col-sm-9">{{ checklist.end_date }}</div>
+                <div class="col-xs-12 col-sm-9">{{ checklist.end_date|date:'F j, Y' }}</div>
             {% else %}
                 <div class="col-xs-12 col-sm-9">{{ checklist.end_date }}</div>
             {% endif %}
