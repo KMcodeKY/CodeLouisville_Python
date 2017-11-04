@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
-    'bootstrap3',
     'checklist',
+    'bootstrap3',
+    'debug_toolbar',
     'django_pdb',
 ]
 
@@ -120,7 +120,10 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
+
+DATE_INPUT_FORMATS = "%m/%d/%y",
+DATE_FORMAT = "m/d/y"
 
 USE_TZ = True
 

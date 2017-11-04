@@ -20,6 +20,7 @@ class ChecklistListView(ListView):
         context['checklistlist'] = []
         for each in context['checklist']:
             context['checklistlist'].append({'url': each.get_absolute_url(), 'text': each})
+        print(context)
         return context
 
 class ChecklistDetailView(DetailView):
