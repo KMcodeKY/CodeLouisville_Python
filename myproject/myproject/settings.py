@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'checklist',
     'bootstrap3',
     'debug_toolbar',
+    'django_filters',
     'django_pdb',
 ]
 

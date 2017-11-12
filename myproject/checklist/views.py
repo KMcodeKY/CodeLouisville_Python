@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from .filters import ChecklistFilter
 from .forms import ChecklistForm
 from .models import Checklist
 
@@ -37,3 +38,7 @@ class ChecklistUpdateView(UpdateView):
 class ChecklistDeleteView(DeleteView):
     model = Checklist
     success_url = '/checklist/'
+
+def checklist_filter_list(request):
+    f = ChecklistFilter(request.GET, queryset=Checklist.objects.all())
+    return render(request, 'checklist/checklist_filter.html', {'filter': f})
