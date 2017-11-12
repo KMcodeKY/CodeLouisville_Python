@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from .forms import ChecklistForm
 from .models import Checklist
 
 def checklist_list(request):
@@ -26,12 +27,12 @@ class ChecklistDetailView(DetailView):
     model = Checklist
 
 class ChecklistCreateView(CreateView):
-    fields = ('title', 'start_date', 'end_date', 'description', 'category', 'completed')
     model = Checklist
+    form_class = ChecklistForm
 
 class ChecklistUpdateView(UpdateView):
-    fields = ('title', 'start_date', 'end_date', 'description', 'category', 'completed')
     model = Checklist
+    form_class = ChecklistForm
 
 class ChecklistDeleteView(DeleteView):
     model = Checklist

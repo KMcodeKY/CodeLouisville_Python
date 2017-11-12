@@ -122,8 +122,8 @@ USE_I18N = True
 
 USE_L10N = False
 
-DATE_INPUT_FORMATS = "%m/%d/%y",
-DATE_FORMAT = "m/d/y"
+DATE_INPUT_FORMATS = "%m/%d/%Y",
+DATE_FORMAT = "m/d/Y"
 
 USE_TZ = True
 
