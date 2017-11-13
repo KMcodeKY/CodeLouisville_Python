@@ -5,19 +5,26 @@ from django_filters import filters
 
 from .models import Checklist
 
-
 filters.LOOKUP_TYPES = [
+    ('lt', 'Less than'),
+    ('gt', 'Greater than'),
     ('gte', 'Greater than or equal to'),
-    ('lte', 'Lesser than or equal to'),
+    ('lte', 'Less than or equal to'),
 ]
 
 class ChecklistFilter(django_filters.FilterSet):
 
     class Meta:
         model = Checklist
-        fields = ['title', 'start_date', 'completed', 'description']
+        fields = ['title', 'description', 'category','start_date', 'end_date', 'completed']
         filter_overrides = {
             models.CharField: {
+                'filter_class': django_filters.CharFilter,
+                'extra': lambda f: {
+                    'lookup_expr': 'icontains',
+                },
+            },
+            models.TextField: {
                 'filter_class': django_filters.CharFilter,
                 'extra': lambda f: {
                     'lookup_expr': 'icontains',
@@ -26,7 +33,7 @@ class ChecklistFilter(django_filters.FilterSet):
             models.DateField: {
                 'filter_class': django_filters.DateFilter,
                 'extra': lambda f: {
-                    'lookup_expr': ('gte','lte'),
+                    'lookup_expr': ('gte','lte','gt','lt'),
                 },
             },
             models.BooleanField: {

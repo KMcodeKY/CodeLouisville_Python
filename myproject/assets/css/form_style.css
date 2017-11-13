@@ -1,7 +1,32 @@
 #id_start_date,
+#id_start_date_0,
+#id_start_date_1,
 #id_end_date,
+#id_end_date_0,
+#id_end_date_1,
 #id_category {
     max-width: 200px;
+}
+
+#id_start_date_1,
+#id_end_date_1 {
+    margin-top: 5px;
+}
+
+.filterWrapper li {
+    list-style: none;
+}
+
+.filter-section {
+    padding: 8px 10px 12px 10px;
+    margin-bottom: 40px;
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    font-size: 0.8em;
+}
+
+.list-section {
+    margin-bottom: 60px;
 }
 
 .edit-item {
@@ -11,6 +36,11 @@
 .input-field {
     padding-right: 7px;
     padding-left: 7px;
+}
+
+.filterWrapper {
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 .fieldWrapper {

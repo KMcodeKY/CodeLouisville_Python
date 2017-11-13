@@ -1,7 +1,7 @@
 # CodeLouisville_Python
 
 This project uses the Django web framework for Python to create a CRUD (Create, Read, Update, Delete) app for checklist to do items. 
-A checklist to do item includes a Title (required), Start Date, End Date, Description, Category (required), and Completion Status.
+A checklist "to do" item includes a Title (required), Start Date, End Date, Description, Category (required), and Completion Status. The checklist items can be filtered for the text contained (in the title and description fields), dates (end date and start date), as well as completion status and category.
 
 Download the project files and open through a python virtual environment (https://docs.python.org/3/library/venv.html)
 
@@ -15,8 +15,6 @@ python manage.py runserver (to run the project)
 
 
 
-Remaining To Do:
+Future Ideas:
 
-Search/Filter
-get_or_create --> Category
 User Authentication

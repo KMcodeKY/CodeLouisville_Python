@@ -1,13 +1,96 @@
 {% extends 'layout.html' %}
+{% load static from staticfiles %}
+{% load checklist_tags %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}" />
+{% endblock %}
 
 {% block content %}
 
-<form action="" method="get">
-        {{ filter.form.as_p }}
-        <input type="submit" />
-    </form>
-    {% for obj in filter.qs %}
-        {{ obj.title }} - {{ obj.start_date }} - {{ obj.completed }}<br />
-    {% endfor %}
+<div class="container form-page">
 
+	<div class='page-header'>
+  		<div class='btn-toolbar pull-right'>
+    		<div class='btn-group'>
+      			<div class='btn btn-success'><a href="{% url 'checklist:create' %}" class="btn-add">Add New Item</a></div>
+    		</div>
+  		</div>
+  		<h1 class="hide-mobile list-title">To Do List:</h1>
+		<h1 class="show-mobile list-title">To Do:</h1>
+	</div>
+
+    <div class="filter-section list-section">
+        <form action="" method="get">
+            {% for field in filter.form %}
+                    <div class="filterWrapper row">
+                        {{ field.label_tag }}
+                        {{ field|addclass:'input-field' }}
+                    </div>
+            {% endfor %}
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary btn-add" value="Filter" />
+            </div>
+        </form>
+    </div>
+
+<div class="list-section">
+	<div class="row">
+			<div class="col-xs-6 col-sm-5 table-headers">Title</div>
+			<div class="hidden-xs col-sm-2 table-headers">Start Date</div>
+			<div class="col-xs-3 col-sm-2 table-headers">End Date</div>
+            <div class="hidden-xs col-sm-2 table-headers">Category</div>
+			<div class="col-xs-3 col-sm-1 table-headers">Completed</div>
+	</div>
+		{% for item in filter.qs %}
+			<div class="row">
+				<div class="col-xs-6 col-sm-5 no-padding"><a href="{{ item.url }}">{{ item.title }}</a></div>
+				<div class="hidden-xs col-sm-2 no-padding">
+					{% if item.start_date %}
+						{{ item.start_date|date:"m/d/Y" }}
+					{% else %}
+						{{ item.start_date }}
+					{% endif %}
+				</div>
+				<div class="col-xs-3 col-sm-2 no-padding">
+					{% if item.end_date %}
+						{{ item.end_date|date:"m/d/Y" }}
+					{% else %}
+						{{ item.end_date }}
+					{% endif %}
+				</div>
+                <div class="hidden-xs col-sm-2 no-padding">{{ item.category }}</div>
+				<div class="col-xs-3 col-sm-1 no-padding">{% if item.completed %}Yes{% else %}No{% endif %}</div>
+
+			</div>
+		{% endfor %}
+</div>
+
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+	jQuery("label").addClass('col-xs-12 col-sm-3');
+	jQuery('.input-field').addClass('col-xs-12 col-sm-9');
+
+	jQuery('label[for^="id_completed"]').removeClass();
+	jQuery('input[id^="id_completed"]').removeClass();
+	jQuery('label[for^="id_completed"]:first').addClass('col-xs-12 col-sm-3');
+	jQuery('.filterWrapper li').addClass('col-xs-4 col-sm-2');
+
+    jQuery('#id_start_date_1').removeClass('col-xs-12 col-sm-9').addClass('col-xs-6 col-sm-3 col-xs-offset-1 col-sm-offset-1');
+	jQuery('#id_end_date_1').removeClass('col-xs-12 col-sm-9').addClass('col-xs-6 col-sm-3 col-xs-offset-1 col-sm-offset-1');
+	jQuery('#id_start_date_0').removeClass('col-xs-12 col-sm-9').addClass('col-xs-5 col-sm-3');
+	jQuery('#id_end_date_0').removeClass('col-xs-12 col-sm-9').addClass('col-xs-5 col-sm-3');
+
+    jQuery('#id_start_date_0').addClass('datepicker');
+	jQuery('#id_end_date_0').addClass('datepicker');
+
+	$(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: "mm/dd/yyyy"
+        });
+    });
+</script>
 {% endblock %}
