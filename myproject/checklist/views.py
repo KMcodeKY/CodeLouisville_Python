@@ -26,7 +26,7 @@ class ChecklistDeleteView(DeleteView):
     success_url = '/checklist/'
 
 def checklist_filter_list(request):
-    checklist_queryset = Checklist.objects.all().order_by('completed', F('end_date').asc(nulls_last=True))
+    checklist_queryset = Checklist.objects.all().order_by('completed', F('end_date').asc(nulls_last=True), F('start_date').asc(nulls_last=True))
     for each in checklist_queryset:
         each.detail_link = each.get_absolute_url()
 

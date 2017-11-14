@@ -44,7 +44,7 @@
 	</div>
 		{% for item in filter.qs %}
 			<div class="row">
-				<div class="col-xs-6 col-sm-5 no-padding"><a href="{{ item.url }}">{{ item.title }}</a></div>
+				<div class="col-xs-6 col-sm-5 no-padding"><a href="\checklist\edit\{{ item.id }}\">{{ item.title }}</a></div>
 				<div class="hidden-xs col-sm-2 no-padding">
 					{% if item.start_date %}
 						{{ item.start_date|date:"m/d/Y" }}
