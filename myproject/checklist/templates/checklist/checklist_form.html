@@ -9,11 +9,13 @@
 {% block content %}
 <div class="container form-page">
 
+	<!-- Page Header -->
 	<div class='page-header'>
 		<h1 class="hide-mobile">{% if not form.instance.pk %}Create New: {% else %}Edit <span class="edit-item">{{ form.instance.title }}</span>{% endif %}</h1>
 		<h1 class="show-mobile">{% if not form.instance.pk %}Create New: {% else %}Edit: {% endif %}</h1>
 	</div>
 
+	<!-- Form fields -->
 <form method='POST'>
 	<div class="form-input">
 		{% csrf_token %}
@@ -29,6 +31,8 @@
 				</div>
 			{% endfor %}
 	</div>
+
+	<!-- Save Cancel and Delete buttons -->
 	<div class='text-center'>
     	<div class='btn-grp'>
 			<input type="submit" class="btn btn-success btn-add" value="Save">
@@ -42,13 +46,20 @@
 
 {% block script %}
 <script>
+	/* Add datepicker to date fields */
 	jQuery('#id_start_date').addClass('datepicker');
 	jQuery('#id_end_date').addClass('datepicker');
+
+	/* Generic column sizes for label fields */
 	jQuery("label").addClass('col-xs-12 col-sm-3');
+	/* Generic column sizes for input fields */
 	jQuery('.input-field').addClass('col-xs-12 col-sm-9');
+
+	/* Remove generic column and label sizes for completed field  */
 	jQuery('#id_completed').removeClass().addClass('col-sm-9').css("width","auto");
 	jQuery('label[for="id_completed"]').removeClass().addClass('col-sm-3');
 
+	/* Set datepicker format */
 	$(document).ready(function () {
         $('.datepicker').datepicker({
             format: "mm/dd/yyyy"

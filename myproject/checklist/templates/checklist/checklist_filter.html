@@ -10,6 +10,7 @@
 
 <div class="container form-page">
 
+	<!-- Page Header -->
 	<div class='page-header'>
   		<div class='btn-toolbar pull-right'>
     		<div class='btn-group'>
@@ -20,6 +21,7 @@
 		<h1 class="show-mobile list-title">To Do:</h1>
 	</div>
 
+	<!-- Filter Form -->
     <div class="filter-section list-section">
         <form action="" method="get">
             {% for field in filter.form %}
@@ -34,6 +36,7 @@
         </form>
     </div>
 
+	<!-- Filtered Records -->
 <div class="list-section">
 	<div class="row">
 			<div class="col-xs-6 col-sm-5 table-headers">Title</div>
@@ -71,22 +74,28 @@
 
 {% block script %}
 <script>
+	/* Generic column sizes for label fields */
 	jQuery("label").addClass('col-xs-12 col-sm-3');
+	/* Generic column sizes for input fields */
 	jQuery('.input-field').addClass('col-xs-12 col-sm-9');
 
+	/* Remove generic column and label sizes for completed field  */
 	jQuery('label[for^="id_completed"]').removeClass();
 	jQuery('input[id^="id_completed"]').removeClass();
 	jQuery('label[for^="id_completed"]:first').addClass('col-xs-12 col-sm-3');
 	jQuery('.filterWrapper li').addClass('col-xs-4 col-sm-2');
 
+	/* Remove generic column and label sizes for date fields  */
     jQuery('#id_start_date_1').removeClass('col-xs-12 col-sm-9').addClass('col-xs-6 col-sm-3 col-xs-offset-1 col-sm-offset-1');
 	jQuery('#id_end_date_1').removeClass('col-xs-12 col-sm-9').addClass('col-xs-6 col-sm-3 col-xs-offset-1 col-sm-offset-1');
 	jQuery('#id_start_date_0').removeClass('col-xs-12 col-sm-9').addClass('col-xs-5 col-sm-3');
 	jQuery('#id_end_date_0').removeClass('col-xs-12 col-sm-9').addClass('col-xs-5 col-sm-3');
 
+	/* Add datepicker  */
     jQuery('#id_start_date_0').addClass('datepicker');
 	jQuery('#id_end_date_0').addClass('datepicker');
 
+	/* Set datepicker format */
 	$(document).ready(function () {
         $('.datepicker').datepicker({
             format: "mm/dd/yyyy"

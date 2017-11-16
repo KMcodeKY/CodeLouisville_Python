@@ -9,6 +9,7 @@ class ChecklistForm(ModelForm):
         model = Checklist
         fields = ('title', 'start_date', 'end_date', 'description', 'category', 'completed')
 
+    #Validation error to check if the end date is less than the start date, if so display message
     def clean(self):
         cleaned_data = super(ChecklistForm, self).clean()
 

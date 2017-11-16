@@ -9,11 +9,13 @@
 
 <div class="container form-page">
 
+    <!-- Page Header -->
 	<div class='page-header'>
 		<h1 class="hide-mobile"><span class="edit-item">{{ checklist.title }}</span></h1>
 		<h1 class="show-mobile">Detail For:</h1>
 	</div>
 
+    <!-- Detail Form -->
     <div class="form-input">
         <div class="fieldWrapper row">
             <div class="col-xs-12 col-sm-3"><strong>Title:</strong></div>
@@ -50,6 +52,8 @@
             <div class="col-xs-12 col-sm-9">{% if checklist.completed %}Yes{% else %}No{% endif %}</div>
         </div>
 	</div>
+
+    <!-- Edit or Cancel buttons -->
 	<div class='text-center'>
 		<div class='btn-grp'>
 			<div class="btn btn-success"><a class="btn-add" href="{% url 'checklist:update' pk=checklist.pk %}">Edit</a></div>
